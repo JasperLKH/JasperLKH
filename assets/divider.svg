@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="18" viewBox="0 0 1000 18" role="img" aria-label="divider">
+  <defs>
+    <linearGradient id="d" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9aa5b6" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#9aa5b6"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="75%" stop-color="#ff9ecb"/>
+      <stop offset="100%" stop-color="#ff9ecb" stop-opacity="0"/>
+      <animate attributeName="x1" values="-1;0;-1" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="0;2;0" dur="7s" repeatCount="indefinite"/>
+    </linearGradient>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="8" width="1000" height="2" fill="url(#d)" filter="url(#g)"/>
+  <g fill="#ffffff" filter="url(#g)">
+    <path d="M0,0 C5,-6 12,-6 14,0 C12,6 5,6 0,0 Z" transform="translate(-20,9) scale(.7)">
+      <animateTransform attributeName="transform" type="translate" values="-20,9;1020,9" dur="11s" repeatCount="indefinite" additive="sum"/>
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="3s" repeatCount="indefinite" additive="sum"/>
+    </path>
+  </g>
+  <circle cx="0" cy="9" r="3" fill="#9aa5b6" filter="url(#g)">
+    <animate attributeName="cx" values="0;1000" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite"/>
+  </circle>
+</svg>
