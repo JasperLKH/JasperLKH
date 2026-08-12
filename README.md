@@ -42,7 +42,7 @@
 
 <br/><br/>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=JasperLKH&bg_color=0d0f14&color=ffffff&line=dbe3ee&point=ff9ecb&area=true&hide_border=true&title_color=ffffff&custom_title=Contribution%20Graph" width="98%" alt="activity graph"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=JasperLKH&bg_color=0d0f14&color=ffffff&line=dbe3ee&point=ff9ecb&area=true&area_color=2b333f&hide_border=true&title_color=ffffff&custom_title=Contribution%20Graph" width="98%" alt="activity graph"/>
 
 </div>
 
