@@ -1,34 +1,57 @@
-
 import base64
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets"
 
-W, H = 1000, 306
+W, H = 1000, 366
 PAD = 34
-LEFT_W = 742                                                         
-AV_CX, AV_CY, AV_R = 862, 170, 76
+LEFT_W = 742
+AV_CX, AV_CY, AV_R = 862, 196, 76
 
-\
 SNOW, SILVER, STEEL = "#ffffff", "#dbe3ee", "#9aa5b6"
-PINK = "#ff9ecb"                                                             
+PINK = "#ff9ecb"
 TEXT, DIM = "#eef2f8", "#8d97a8"
 MONO = "'Fira Code','JetBrains Mono',ui-monospace,SFMono-Regular,monospace"
 SANS = "'Segoe UI','Helvetica Neue',Arial,sans-serif"
 
+NAME_FIRST, NAME_LAST = "KA HO LEE", "JASPER"
+TAGLINE = "Software Engineer &#183; building agent systems"
+BADGE = "HKU &#8217;27"
+EXPERIENCE = ["Google", "Tencent"]
+QUEST = ["Multi-agent systems", "LLM", "Distributed systems", "SaaS"]
 SKILLS = ["Java", "Spring Boot", "Python", "TypeScript", "PostgreSQL", "Docker", "AWS"]
+STATUS = "Looking for a graduate software engineering role"
+
 
 def label(x, y, s, color=SILVER):
     return (f'    <text x="{x}" y="{y}" font-family="{MONO}" font-size="10.5" letter-spacing="2.6" '
             f'fill="{color}" opacity=".8">{s}</text>')
 
+
 def body(x, y, s, size=15, color=TEXT, weight="400", family=SANS):
     return (f'    <text x="{x}" y="{y}" font-family="{family}" font-size="{size}" font-weight="{weight}" '
             f'fill="{color}">{s}</text>')
 
+
+def pills(x, y, items):
+    out, cx = [], x
+    for i, s in enumerate(items):
+        w = len(s) * 8.6 + 34
+        out.append(
+            f'    <g>'
+            f'<rect x="{cx:.0f}" y="{y}" width="{w:.0f}" height="30" rx="15" fill="{SNOW}" fill-opacity=".07" '
+            f'stroke="{SNOW}" stroke-opacity=".7" stroke-width="1.2"/>'
+            f'<circle cx="{cx + 15:.0f}" cy="{y + 15}" r="3" fill="{PINK}">'
+            f'<animate attributeName="opacity" values="1;.3;1" dur="2.6s" begin="{i * 0.5:.1f}s" repeatCount="indefinite"/>'
+            f'</circle>'
+            f'<text x="{cx + 27:.0f}" y="{y + 20}" font-family="{SANS}" font-size="14" font-weight="600" '
+            f'fill="{SNOW}">{s}</text></g>')
+        cx += w + 12
+    return "\n".join(out)
+
+
 def chips(x, y, items, maxw, lh=34):
-    pass
     out, cx, cy = [], x, y
     for i, s in enumerate(items):
         w = len(s) * 7.6 + 24
@@ -46,8 +69,8 @@ def chips(x, y, items, maxw, lh=34):
         cx += w + 9
     return "\n".join(out)
 
+
 def bullets(x, y, items, colw=250, lh=24):
-    pass
     out = []
     for i, s in enumerate(items):
         bx = x + (i % 2) * colw
@@ -58,18 +81,17 @@ def bullets(x, y, items, colw=250, lh=24):
                    f'fill="{TEXT}">{s}</text>')
     return "\n".join(out)
 
+
 def bracket(x, y, sx, sy):
     return (f'    <path d="M{x + 20*sx},{y} L{x},{y} L{x},{y + 20*sy}" fill="none" stroke="url(#edge)" '
             f'stroke-width="2" stroke-linecap="round" opacity=".9"/>')
 
+
 def avatar():
-    pass
     found = next((p for ext in ("png", "jpg", "jpeg", "webp")
                   for p in [OUT / f"avatar.{ext}"] if p.exists()), None)
     if found:
         raw = found.read_bytes()
-        \
-\
         if raw[:8] == b"\x89PNG\r\n\x1a\n":
             mime = "png"
         elif raw[:2] == b"\xff\xd8":
@@ -99,8 +121,8 @@ def avatar():
       </circle>
     </g>'''
 
+
 def flakes():
-    pass
     spec = [(120, 19, -3), (300, 24, -9), (470, 17, -14), (655, 27, -5), (735, 21, -18)]
     out = []
     for x, dur, delay in spec:
@@ -113,6 +135,7 @@ def flakes():
       <circle r="2.4" fill="{SNOW}"/>
     </g>''')
     return "\n".join(out)
+
 
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="About panel">
   <defs>
@@ -149,28 +172,31 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewB
 
 {flakes()}
 
-{body(PAD, 52, "KA HO LEE", size=27, weight="800")}
+{body(PAD, 52, NAME_FIRST, size=27, weight="800")}
 {body(PAD + 152, 52, "&#183;", size=27, color=DIM)}
-{body(PAD + 172, 52, "JASPER", size=27, weight="800", color=SILVER)}
-{body(PAD, 76, "Software Engineer &#183; building agent systems", size=14, color=DIM)}
+{body(PAD + 172, 52, NAME_LAST, size=27, weight="800", color=SILVER)}
+{body(PAD, 76, TAGLINE, size=14, color=DIM)}
 
     <rect x="{PAD}" y="99" width="{LEFT_W - PAD}" height="2" fill="url(#edge)" opacity=".85" filter="url(#soft)"/>
 
-{label(PAD, 128, "CURRENT QUEST")}
-{bullets(PAD, 154, ["Multi-agent systems", "LLM", "Distributed systems", "SaaS"])}
+{label(PAD, 126, "EXPERIENCE")}
+{pills(PAD, 136, EXPERIENCE)}
 
-{label(PAD, 214, "EQUIPPED")}
-{chips(PAD, 224, SKILLS, maxw=LEFT_W - PAD - 30)}
+{label(PAD, 196, "CURRENT QUEST")}
+{bullets(PAD, 220, QUEST)}
 
-{label(PAD, 280, "CURRENTLY", color=PINK)}
-{body(PAD + 104, 280, "Looking for a graduate software engineering role", size=13, color=TEXT)}
+{label(PAD, 278, "EQUIPPED")}
+{chips(PAD, 288, SKILLS, maxw=LEFT_W - PAD - 30)}
+
+{label(PAD, 344, "CURRENTLY", color=PINK)}
+{body(PAD + 104, 344, STATUS, size=13, color=TEXT)}
 
     <g transform="translate({W - PAD - 116},18)">
       <rect width="116" height="26" rx="13" fill="{SNOW}" fill-opacity=".08" stroke="{SNOW}" stroke-opacity=".45"/>
       <circle cx="16" cy="13" r="3.5" fill="{PINK}">
         <animate attributeName="opacity" values="1;.25;1" dur="2.2s" repeatCount="indefinite"/>
       </circle>
-      <text x="30" y="17.5" font-family="{MONO}" font-size="11" fill="{TEXT}" letter-spacing="1">HKU &#8217;27</text>
+      <text x="30" y="17.5" font-family="{MONO}" font-size="11" fill="{TEXT}" letter-spacing="1">{BADGE}</text>
     </g>
 {avatar()}
 
