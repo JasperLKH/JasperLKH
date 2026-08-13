@@ -58,6 +58,12 @@
 
 <br/>
 
+<a href="https://github.com/JasperLKH/profile-readme-skill">
+  <img height="115" src="https://github-readme-stats-git-master-rickstaa.vercel.app/api/pin/?username=JasperLKH&repo=profile-readme-skill&hide_border=true&theme=graywhite&bg_color=0d0f14&title_color=ffffff&text_color=eef2f8&icon_color=ff9ecb"/>
+</a>
+
+<br/>
+
 <a href="https://chromewebstore.google.com/detail/moodle-hku-downloader/pmghnbalkcmkdmjaljdbeodahkncekbm">
   <img src="https://img.shields.io/badge/Moodle%20HKU%20Downloader-Chrome%20Web%20Store-0d0f14?style=for-the-badge&logo=googlechrome&logoColor=9aa5b6"/>
 </a>
