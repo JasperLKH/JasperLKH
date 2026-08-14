@@ -52,6 +52,13 @@
 
 <div align="center">
 
+<a href="https://github.com/JasperLKH/argus">
+  <img height="115" src="https://github-readme-stats-git-master-rickstaa.vercel.app/api/pin/?username=JasperLKH&repo=argus&hide_border=true&theme=graywhite&bg_color=0d0f14&title_color=ffffff&text_color=eef2f8&icon_color=ff9ecb"/>
+</a>
+
+<br/>
+
+
 <a href="https://github.com/JasperLKH/Morgan-Stanley-Code-to-Give-2025-Team-6">
   <img height="115" src="https://github-readme-stats-git-master-rickstaa.vercel.app/api/pin/?username=JasperLKH&repo=Morgan-Stanley-Code-to-Give-2025-Team-6&hide_border=true&theme=graywhite&bg_color=0d0f14&title_color=ffffff&text_color=eef2f8&icon_color=ff9ecb"/>
 </a>
